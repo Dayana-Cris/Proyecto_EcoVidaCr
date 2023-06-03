@@ -14,9 +14,17 @@ namespace EcoVidaCR.Controllers
             contexto = context;
         }
         //Es el primer metodo que se ejecuta en el controlador
-        public IActionResult Index()
+        public IActionResult Index(string Buscar)
         {
-            return View(contexto.Destinos.ToList());
+            var ListaP = contexto.Destinos.ToList();
+            if (Buscar != null)
+            {
+                string CodBuscar = Buscar;
+                var NewList = ListaP.Where(x => x.ubicacion == CodBuscar);
+                ListaP = NewList.ToList();
+            }
+
+            return View(ListaP);
         }
 
         [HttpGet]
