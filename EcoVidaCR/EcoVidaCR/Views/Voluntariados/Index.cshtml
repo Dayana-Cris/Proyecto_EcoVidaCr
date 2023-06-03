@@ -1,0 +1,92 @@
+﻿@model IEnumerable<EcoVidaCR.Models.Voluntariados>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+@*Se pregunta si el usuario tiene rol de administrador*@
+@if (User.IsInRole("Administrador"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idVoluntariado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreVoluntariado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idDestino)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telefono)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idVoluntariado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreVoluntariado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idDestino)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.correo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telefono)
+                </td>
+
+                @*Se pregunta si el usuario tiene rol de administrador*@
+                @if (User.IsInRole("Cliente"))
+                {
+
+                    <td>
+
+                        @Html.ActionLink("Solicitar informacion", "Enviado", new {  id=item.idVoluntariado  },
+                        new { @class = "btn btn-primary glyphicon glyphicon-edit" })
+
+                    </td>
+                }
+
+                @*Se pregunta si el usuario tiene rol de administrador*@
+                @if (User.IsInRole("Administrador"))
+                {
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new {  id=item.idVoluntariado  }) |
+                        @Html.ActionLink("Details", "Details", new {  id=item.idVoluntariado  }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.idVoluntariado  })
+                    </td>
+                }
+
+            </tr>
+        }
+    </tbody>
+</table>
