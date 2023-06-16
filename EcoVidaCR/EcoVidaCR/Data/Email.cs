@@ -114,7 +114,7 @@ namespace EcoVidaCR.Data
 
                 //se indica las credencias ojo  muy importante habilitar dentro de la seguridad del buzon
                 //la opción de acceso aplicaciones poco segura esto lo presenta el servidor de gmail
-                smtp.Credentials = new NetworkCredential("distribucionespacificocr2022@gmail.com", "zsukepijltewuhmn");
+                smtp.Credentials = new NetworkCredential("ecovidacrpuravida@gmail.com", "dnljuutqqjyqvidv");
 
                 //bien, enviamos en correo
                 smtp.Send(email);
