@@ -2,7 +2,106 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center">   
+
+    <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true"
+                aria-label="First slide"></li>
+            <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
+            <li data-bs-target="#carouselId" data-bs-slide-to="2" aria-label="Third slide"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <img src="~/img/index/imgcarru01.jpg" class="w-100 d-block" alt="Hotel de noche">
+            </div>
+            <div class="carousel-item">
+                <img src="~/img/index/imgcarru02.jpg" class="w-100 d-block" alt="Habitacion">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>¡Ven y visita Costa Rica!</h2>
+                    <p>Costa Rica cuenta con una gran variedad de lugares turísticos que podés visitar y disfrutar junto a tus seres queridos.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="~/img/index/imgcarru03.jpg" class="w-100 d-block" alt="Area de piscinas">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>La fauna de Costa Rica</h2>
+                    <p>Costa Rica, presenta gran cantidad de fauna que podés apreciar y proteger.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <h1 class="display-4 fw-bold mb-3 mt-4">ECOVIDACR</h1>
+
+    <div class="row align-items-center mb-4">        
+        <div class="col-xl-7 col-lg-7 col-md-7 float-left p-5">
+            <h4 class="fw-bold mb-3 ">Destinos</h4>
+            <p class="textJustify">
+                Costa Rica es un país que ofrece una amplia gama de destinos para los viajeros. Con su rica biodiversidad
+                y paisajes variados, este país centroamericano se ha convertido en un lugar atractivo para quienes buscan
+                aventura y conexión con la naturaleza. Desde densas selvas tropicales hasta majestuosos volcanes y hermosas
+                playas, Costa Rica tiene algo para todos los gustos. Sus destinos ofrecen experiencias únicas, permitiendo
+                a los visitantes explorar su flora y fauna, participar en actividades al aire libre, descubrir la cultura 
+                local y relajarse en entornos naturales impresionantes. Costa Rica se ha consolidado como un destino 
+                turístico de renombre gracias a su belleza natural y a la hospitalidad de su gente, lo que lo convierte
+                en un lugar ideal para quienes desean vivir una experiencia inolvidable en un entorno tropical.
+
+            </p>
+            <a asp-controller="Destinos" asp-action="Index" name="" id="" class="btn-square rounded ps-4 pe-4"  role="button">Ver más</a>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-5 float-left">
+            <img src="~/img/index/destinos.jpg" class="w-100 d-block img-fluid" alt="Destinos">
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-4">   
+        <div class="col-xl-5 col-lg-5 col-md-5 float-left">
+            <img src="~/img/index/voluntariados.jpg" class="w-100 d-block img-fluid" alt="Voluntariados">
+        </div>
+        <div class="col-xl-7 col-lg-7 col-md-7 float-left p-5">
+            <h4 class="fw-bold mb-3 ">Voluntariados</h4>
+            <p class="textJustify">
+                EcoVidaCR te ofrece la oportunidad de conocer acerca de voluntariados en Costa Rica. Este hermoso país te
+                ofrece el escenario perfecto para involucrarse en proyectos de conservación ambiental, protección de la 
+                vida silvestre y desarrollo sostenible. Sumergirse en la exuberante naturaleza costarricense mientras se
+                contribuye de manera significativa a la preservación de sus tesoros naturales es un regalo invaluable. 
+                Cada día de voluntariado es una oportunidad para aprender, crecer y marcar la diferencia en la vida de 
+                otros. El amor y gratitud que se experimenta al trabajar en estrecha colaboración con personas comprometidas 
+                y apasionadas, así como con la maravillosa biodiversidad que habita en este país, es algo que perdura para 
+                siempre en el corazón y alimenta el deseo de seguir haciendo un impacto positivo en el mundo. 
+
+            </p>
+            <a asp-controller="Voluntariados" asp-action="Index" name="" id="" class="btn-square rounded ps-4 pe-4" role="button">Ver más</a>
+        </div>        
+    </div>
+
+    <div class="row align-items-center mb-4">        
+        <div class="col-xl-7 col-lg-7 col-md-7 float-left p-5">
+            <h4 class="fw-bold mb-3 ">Consecuencias</h4>
+            <p class="textJustify">
+                La importancia de tener un medio ambiente sano y libre de contaminación no puede ser subestimada. Las 
+                consecuencias de descuidar y degradar nuestro entorno natural son cada vez más evidentes y alarmantes. 
+                Sin un medio ambiente saludable, nuestra salud, seguridad y bienestar están en riesgo. La contaminación
+                afecta tanto a los seres humanos como a los ecosistemas, comprometiendo la vida de las generaciones presentes 
+                y futuras. Es crucial advertir sobre estas consecuencias para concientizar y motivar acciones que promuevan 
+                la protección y preservación de nuestro entorno natural. Solo a través de un compromiso colectivo y decisiones
+                responsables podremos asegurar un futuro sostenible y un planeta habitable para todos. Es por esto, que
+                EcoVidaCR te invita a visitar nuestro apartado acerca de las consecuencias para que estés actualizado. 
+            </p>
+            <a asp-controller="Consecuencias" asp-action="Index" name="" id="" class="btn-square rounded ps-4 pe-4" role="button">Ver más</a>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-5 float-left">
+            <img src="~/img/index/consecuencias.jpg" class="w-100 d-block img-fluid" alt="Consecuencias">
+        </div>
+    </div>
+
 </div>

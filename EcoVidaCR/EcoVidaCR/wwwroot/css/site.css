@@ -1,18 +1,39 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+.textJustify {
+    text-align: justify;
+}
+
+.btn-square {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    transition: font-size 0.2s;
+    text-decoration: none;
+}
+
+.btn-square:hover {
+    background-color: white;
+    color: rgb(0, 0, 0);
+    border: 1px solid black;
+    text-decoration: none;
 }
