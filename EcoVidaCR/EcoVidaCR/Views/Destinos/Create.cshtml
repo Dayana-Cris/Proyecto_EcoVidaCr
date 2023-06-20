@@ -5,12 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<h1 class=text-center> Añadir Destino Turístico</h1>
 
-<h4>Destinos</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-lg-6">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group" hidden>
@@ -25,7 +24,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="descripcion" class="control-label"></label>
-                <input asp-for="descripcion" class="form-control" />
+                @*<input asp-for="descripcion" class="form-control" />*@
+                <textarea asp-for="descripcion" class="form-control" rows="4"> </textarea>
                 <span asp-validation-for="descripcion" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -35,19 +35,33 @@
             </div>
             <div class="form-group">
                 <label asp-for="aspectos" class="control-label"></label>
-                <input asp-for="aspectos" class="form-control" />
+             @*   <input asp-for="aspectos" class="form-control" />*@
+                <textarea asp-for="aspectos" class="form-control" rows="4"> </textarea>
                 <span asp-validation-for="aspectos" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label asp-for="rutaURLimg" class="control-label"></label>
+                <input asp-for="rutaURLimg" class="form-control" />
+                <span asp-validation-for="rutaURLimg" class="text-danger"></span>
             </div>
+            <div class="form-group  mt-3 text-center">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+                <div>
+                    <a asp-action="Index">Regresar</a>
+                </div>
+            
         </form>
     </div>
+   <div class="col-lg-6">
+        <div class="mt-5">
+           <img src="~/img/destinos/imgCostaRica.jpg" width="550" height="350" /><br>
+        </div>
+   </div>
+
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -5,45 +5,53 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Destinos</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.idDestino)
+<h1 class="text-center">Detalles del Destino</h1>
+  <hr />
+<div class="row">
+    <div class="col-lg-6">
+         <dl class="row">
+        <dt >
+            @Html.DisplayNameFor(model => model.idDestino):
         </dt>
-        <dd class = "col-sm-10">
+        <dd >
             @Html.DisplayFor(model => model.idDestino)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.nombre)
+        <dt >
+            @Html.DisplayNameFor(model => model.nombre):
         </dt>
-        <dd class = "col-sm-10">
+        <dd >
             @Html.DisplayFor(model => model.nombre)
         </dd>
-        <dt class = "col-sm-2">
+        <dt >
             @Html.DisplayNameFor(model => model.descripcion)
         </dt>
-        <dd class = "col-sm-10">
+        <dd >
             @Html.DisplayFor(model => model.descripcion)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ubicacion)
+        <dt >
+            @Html.DisplayNameFor(model => model.ubicacion):
         </dt>
-        <dd class = "col-sm-10">
+        <dd >
             @Html.DisplayFor(model => model.ubicacion)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.aspectos)
+        <dt >
+            @Html.DisplayNameFor(model => model.aspectos):
         </dt>
-        <dd class = "col-sm-10">
+        <dd >
             @Html.DisplayFor(model => model.aspectos)
         </dd>
     </dl>
+    </div>
+    <div class="col-lg-6">
+         <div>
+            <img src="@Model.rutaURLimg" width="400" height="300" /><br>
+         </div>
+     </div>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idDestino}) |
-    <a asp-action="Index">Back to List</a>
+     <button class="btn btn-primary text-center">
+        @Html.ActionLink("Editar", "Edit", new { id = Model.idDestino},new {@class="text-decoration-none text-light"})
+     </button>
+    |
+    <a asp-action="Index">Regresar</a>
 </div>

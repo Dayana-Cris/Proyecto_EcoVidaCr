@@ -42,7 +42,7 @@ namespace EcoVidaCR.Controllers
            ubicacion varchar(500) not null,
            aspectos varchar(500) not null
       */
-        public async Task<IActionResult> Create([Bind("nombre,descripcion,ubicacion,aspectos")] Destinos destinos)
+        public async Task<IActionResult> Create([Bind("nombre,descripcion,ubicacion,aspectos,rutaURLimg")] Destinos destinos)
         {
             destinos.idDestino = 0;
             if (ModelState.IsValid)
@@ -77,7 +77,7 @@ namespace EcoVidaCR.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int Id, [Bind("idDestino, nombre,descripcion,ubicacion,aspectos")] Destinos destinos)
+        public async Task<IActionResult> Edit(int Id, [Bind("idDestino, nombre,descripcion,ubicacion,aspectos,rutaURLimg")] Destinos destinos)
         {
             if (Id != destinos.idDestino)
             {

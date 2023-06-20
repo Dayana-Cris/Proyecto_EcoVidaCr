@@ -37,3 +37,13 @@ body {
     border: 1px solid black;
     text-decoration: none;
 }
+
+.colorDiv {
+    background-color: rgb(30, 108, 45);
+}
+
+.fondoDestinos {
+    background-image: url('/img/destinos/FondoDestinos.jpg');
+    background-size: cover;
+    background-position: center;
+}

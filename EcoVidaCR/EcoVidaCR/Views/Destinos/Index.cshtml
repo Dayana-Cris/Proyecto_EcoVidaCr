@@ -4,72 +4,78 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<body class="fondoDestinos m-0 p-0">
+<h1 class="text-center mb-4">Destinos turísticos sostenibles</h1>
 
-<h1>Index</h1>
-
-@*Se pregunta si el usuario tiene rol de administrador*@
-@if (User.IsInRole("Administrador"))
-{
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-}
 <form asp-controller="Destinos" asp-action="Index">
-    <p>
-        Buscar: <input type="text" name="Buscar" class="form-text" />
+    <p >
+        Buscar destinos por provincia: <input type="text" name="Buscar" class="form-text ms-1" />
         <input type="submit" value="Buscar" class="btn btn-sm btn-dark" />
     </p>
 </form>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.idDestino)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ubicacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.aspectos)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.idDestino)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ubicacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.aspectos)
-            </td>
-                @*Se pregunta si el usuario tiene rol de administrador*@
-                @if (User.IsInRole("Administrador"))
-                {
-
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new {  id=item.idDestino  }) |
-                        @Html.ActionLink("Details", "Details", new {  id=item.idDestino  }) |
-                        @Html.ActionLink("Delete", "Delete", new { id=item.idDestino  })
-                    </td>
-                }
-        </tr>
+<hr />
+@*Se pregunta si el usuario tiene rol de administrador*@
+@if (User.IsInRole("Administrador"))
+{
+    <button class="btn btn-success">
+        <a asp-action="Create" class="text-light text-decoration-none">[+] Agregar Destino</a>
+    </button>
 }
-    </tbody>
-</table>
+@foreach (var item in Model) {
+        <div class="container  pt-4 pb-4 mb-4">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div>
+                            <h2 class= "text-center">@Html.DisplayFor(modelItem => item.nombre)</h2> 
+                        </div>
+                        <div hidden>
+                            @Html.DisplayNameFor(model => model.idDestino)
+                            @Html.DisplayFor(modelItem => item.idDestino) 
+                        </div>
+                        <div>
+                            @*@Html.DisplayNameFor(model => model.descripcion):*@
+                           <p class="textJustify">@Html.DisplayFor(modelItem => item.descripcion)</p> 
+                        </div>
+                        <div>
+                            <p>
+                            <span class="fw-bold">@Html.DisplayNameFor(model => model.ubicacion): </span>
+                              @Html.DisplayFor(modelItem => item.ubicacion)
+                            </p>
+                            
+                        </div>
+                         <div>
+                             <p class="fw-bold textJustify">@Html.DisplayNameFor(model => model.aspectos): </p>
+                             <p>
+                             @Html.DisplayFor(modelItem => item.aspectos)
+                             </p>
+                        </div>
+                         @if (User.IsInRole("Administrador"))
+                            {
+                        <div class="text-center">
+                            <button class="btn btn-primary">
+                                @Html.ActionLink("Editar", "Edit", new {  id=item.idDestino  },new {@class="text-decoration-none text-light"})
+                            </button>
+                            |
+                            <button class="btn btn-info">
+                                @Html.ActionLink("Detalles", "Details", new {  id=item.idDestino  },new {@class="text-decoration-none text-light"})
+                            </button>
+                            |
+                            <button class="btn btn-danger">
+                               @Html.ActionLink("Eliminar", "Delete", new { id=item.idDestino  },new {@class="text-decoration-none text-light"})
+                            </button>
+                            
+                        </div>
+                         }
+                    </div>
+                    <div class="col-lg-6">
+                        <div>
+                            <img src="@item.rutaURLimg" width="550" height="350" /><br>
+                        </div>
+                    </div>
+                 </div>
+             </div>
+
+             <hr>
+
+}
+</body>
