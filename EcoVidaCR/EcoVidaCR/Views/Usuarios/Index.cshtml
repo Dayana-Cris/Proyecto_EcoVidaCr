@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<body class="fondoDestinos">
 <h1 class="text-center">Lista de usuarios</h1>
 <hr />
 <p>
@@ -29,6 +29,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.rol)
             </th>
+            <th>
+                Acciones
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -52,15 +55,15 @@
             </td>
             <td>
                 <button class="btn btn-primary">
-                      @Html.ActionLink("Edit", "Edit", new { id=item.idUsuario },new {@class="text-decoration-none text-light"})
+                      @Html.ActionLink("Editar", "Edit", new { id=item.idUsuario },new {@class="text-decoration-none text-light"})
                 </button>
                 |
                 <button class="btn btn-info">
-                      @Html.ActionLink("Details", "Details", new { id=item.idUsuario },new {@class="text-decoration-none text-light"})
+                      @Html.ActionLink("Detalles", "Details", new { id=item.idUsuario },new {@class="text-decoration-none text-light"})
                 </button>
                  |
                  <button class="btn btn-danger">
-                      @Html.ActionLink("Delete", "Delete", new { id=item.idUsuario },new {@class="text-decoration-none text-light"})
+                      @Html.ActionLink("Eliminar", "Delete", new { id=item.idUsuario },new {@class="text-decoration-none text-light"})
                  </button>
                  
                      @*   @Html.ActionLink("Edit", "Edit", new { id=item.idUsuario }) |
@@ -74,3 +77,4 @@
 }
     </tbody>
 </table>
+</body>
