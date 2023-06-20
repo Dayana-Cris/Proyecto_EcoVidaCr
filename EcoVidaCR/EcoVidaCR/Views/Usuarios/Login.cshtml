@@ -3,16 +3,15 @@
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Login</h1>
-
+<body class="fondoLogin">
 <div class="container">
     <div class="row">
 
-        <div class="col-sm-4">
+        <div class="col-sm-4 ">
         </div>
 
-        <div class="col-sm-4">
+        <div class="col-sm-4 bg-success text-light p-5 m-5">
+            <h2 class="text-center mb-4 mt-2">Inicio de sesión</h2>
             @*Mostrar un mensaje de error mediante el alert*@
             @if (TempData["Mensaje"] != null)
             {
@@ -31,27 +30,27 @@
             <form asp-action="Login" id="FormularioLogin">
                 @*Entrada de datos para Email*@
                 <div class="form-group">
-                    <label aps-for="correo" class="control-label">Email</label>
-                    <input asp-for="correo" class="form-control" />
+                    @*<label aps-for="correo" class="control-label">Email</label>*@
+                    <input asp-for="correo" class="form-control" placeholder="Correo electrónico" />
                     <span asp-validation-for="correo" class="text-danger"> </span>
 
                 </div>
 
                 @*Entrada de datos para Password*@
                 <div class="form-group">
-                    <label aps-for="password" class="control-label">Password</label>
-                    <input asp-for="password" class="form-control" />
+                    @*<label aps-for="password" class="control-label">Password</label>*@
+                    <input asp-for="password" class="form-control mt-4 mb-3" placeholder="Contraseña"/>
                     <span asp-validation-for="password" class="text-danger"> </span>
-                    ¿No tiene una cuenta?
+                    <p class="text-center">¿No tiene una cuenta?  <a class="text-light" asp-area="" asp-controller="Usuarios" , asp-action="CrearCuenta">Cree una.</a></p>
 
                     @*Ojo aqui podemos crear una cuenta en caso de que no tenga el usuario*@
-                    <a asp-area="" asp-controller="Usuarios" , asp-action="CrearCuenta">Cree una.</a>
+                    
 
                 </div>
 
                 @*Boton encargado de realizar el postback del formulario*@
-                <div class="form-group">
-                    <input type="submit" value="Aceptar" class="btn btn-primary" />
+                <div class="form-group text-center">
+                    <input type="submit" value="Aceptar" class="btn btnAceptarLogin"/>
 
                 </div>
 
@@ -63,6 +62,6 @@
     </div>
 
 </div>
-
+</body>
 
 

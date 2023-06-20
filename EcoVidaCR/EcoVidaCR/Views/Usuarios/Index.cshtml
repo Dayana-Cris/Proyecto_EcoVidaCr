@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
-
+<h1 class="text-center">Lista de usuarios</h1>
+<hr />
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">[+]Nuevo</a>
 </p>
 
 <table class="table">
@@ -50,15 +50,26 @@
             <td>
                 @Html.DisplayFor(modelItem => item.rol)
             </td>
-
-            
-          
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id=item.idUsuario }) |
+            <td>
+                <button class="btn btn-primary">
+                      @Html.ActionLink("Edit", "Edit", new { id=item.idUsuario },new {@class="text-decoration-none text-light"})
+                </button>
+                |
+                <button class="btn btn-info">
+                      @Html.ActionLink("Details", "Details", new { id=item.idUsuario },new {@class="text-decoration-none text-light"})
+                </button>
+                 |
+                 <button class="btn btn-danger">
+                      @Html.ActionLink("Delete", "Delete", new { id=item.idUsuario },new {@class="text-decoration-none text-light"})
+                 </button>
+                 
+                     @*   @Html.ActionLink("Edit", "Edit", new { id=item.idUsuario }) |
                         @Html.ActionLink("Details", "Details", new { id=item.idUsuario }) |
-                        @Html.ActionLink("Delete", "Delete", new { id=item.idUsuario })
-                    </td>
-                
+                        @Html.ActionLink("Delete", "Delete", new { id=item.idUsuario })*@
+               </td>
+                 
+                            
+                            
         </tr>
 }
     </tbody>

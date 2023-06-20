@@ -47,3 +47,23 @@ body {
     background-size: cover;
     background-position: center;
 }
+
+.fondoLogin {
+    /*background-color: rgb(153, 226, 167);*/
+    background-image: url('/img/login/fondo.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.btnAceptarLogin {
+    background-color: rgb(153, 226, 167);
+}
+.btnAceptarLogin:hover{
+    border: 2px solid white;
+}
+
+.bgColorCrearC {
+    background-color: rgb(80, 154, 95 );
+    bor
+}
+/*99, 200, 118*/
