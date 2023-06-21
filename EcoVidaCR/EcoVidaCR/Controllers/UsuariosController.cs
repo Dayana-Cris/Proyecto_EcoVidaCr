@@ -269,7 +269,7 @@ namespace EcoVidaCR.Controllers
                 catch (Exception ex)
                 {
                     //Ojo con el ex.Message se muestra el detalle tecnico del error
-                    TempData["MensajeError"] = "Error, no se logro crear el usuario" + ex.Message;
+                    TempData["MensajeError"] = "Error, no se logro crear el usuario";
                 }
 
                 //Se ubica al usuario en la View de Crear Cuenta
