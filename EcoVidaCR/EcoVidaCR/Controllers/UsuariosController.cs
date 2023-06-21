@@ -38,13 +38,10 @@ namespace EcoVidaCR.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("nombre, correo, password")] Usuarios user)
         {
-
             user.idUsuario = 0;
             user.rol = "Administrador";
             if (User != null)
             {
-
-
                 //Se almacena el usuario
                 this.contexto.Usuarios.Add(user);
 
@@ -53,14 +50,13 @@ namespace EcoVidaCR.Controllers
                     //Se aplican los cambios
                     this.contexto.SaveChanges();
 
-
                     //Se crea un mensaje de informacion
                     return RedirectToAction("Index", "Home");
                 }
                 catch (Exception ex)
                 {
                     //Ojo con el ex.Message se muestra el detalle tecnico del error
-                    TempData["MensajeError"] = "Error, no se logro crear el usuario" + ex.Message;
+                    TempData["MensajeError"] = "Error, no se logro crear el usuario ";
                 }
 
                 //Se ubica al usuario en la View de Crear Cuenta

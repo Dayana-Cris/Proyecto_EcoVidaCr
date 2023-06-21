@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EcoVidaCR.Models
 {
@@ -46,5 +46,6 @@ namespace EcoVidaCR.Models
         [StringLength(500, ErrorMessage = "La ruta ingresada es demasiada larga")]
         [DataType(DataType.ImageUrl)]
         public string rutaURLimg { get; set; }
+
     }
 }
