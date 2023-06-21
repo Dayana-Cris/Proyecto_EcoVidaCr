@@ -40,5 +40,11 @@ namespace EcoVidaCR.Models
         [Display(Name = "Telefono de contacto")]
         [StringLength(15, ErrorMessage = "El telefono que agrego es demasiado largo")]
         public string telefono { get; set; }
+
+        [Required(ErrorMessage = "Debe ingresar una ruta valida de imagen")]
+        [Display(Name = "Url para la imagen del destino")]
+        [StringLength(500, ErrorMessage = "La ruta ingresada es demasiada larga")]
+        [DataType(DataType.ImageUrl)]
+        public string rutaURLimg { get; set; }
     }
 }

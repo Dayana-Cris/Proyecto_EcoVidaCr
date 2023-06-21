@@ -28,7 +28,7 @@ namespace EcoVidaCR.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("nombreVoluntariado,descripcion,idDestino,correo,telefono")] Voluntariados voluntariados)
+        public async Task<IActionResult> Create([Bind("nombreVoluntariado,descripcion,idDestino,correo,telefono,rutaURLimg")] Voluntariados voluntariados)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +62,7 @@ namespace EcoVidaCR.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int Id, [Bind("idVoluntariado,nombreVoluntariado,descripcion,idDestino,correo,telefono")] Voluntariados voluntariado)
+        public async Task<IActionResult> Edit(int Id, [Bind("idVoluntariado,nombreVoluntariado,descripcion,idDestino,correo,telefono,rutaURLimg")] Voluntariados voluntariado)
         {
             if (Id != voluntariado.idVoluntariado)
             {

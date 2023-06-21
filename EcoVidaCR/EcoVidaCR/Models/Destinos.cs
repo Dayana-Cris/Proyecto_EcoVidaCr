@@ -43,7 +43,9 @@ namespace EcoVidaCR.Models
         [Display(Name = "Url para la imagen del destino")]
         [StringLength(500, ErrorMessage = "La ruta ingresada es demasiada larga")]
         [DataType(DataType.ImageUrl)]
-        public string rutaURLimg { get; set; } 
+        public string rutaURLimg { get; set; }
+
+        
 
     }
 }
