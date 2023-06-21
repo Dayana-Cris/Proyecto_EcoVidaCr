@@ -28,13 +28,32 @@ namespace EcoVidaCR.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("nombreVoluntariado,descripcion,idDestino,correo,telefono,rutaURLimg")] Voluntariados voluntariados)
+        public async Task<IActionResult> Create([Bind("nombreVoluntariado,descripcion,idDestino,correo,telefono,rutaURLimg, nombreDestino")] Voluntariados voluntariados)
         {
+            string newNombre = "";
             if (ModelState.IsValid)
             {
+                foreach (var destino in contexto.Destinos)
+                {
+                    if (destino.idDestino == voluntariados.idDestino)
+                    {
+                        newNombre = destino.nombre;                      
+                                               
+                    }
+                }               
+                
                 contexto.Add(voluntariados);
                 await contexto.SaveChangesAsync();
+                var entidad = contexto.Voluntariados.FirstOrDefault(t => t.idVoluntariado == voluntariados.idVoluntariado);
+
+                entidad.nombreDestino = newNombre;
+
+
+                contexto.Entry(entidad).Property(e => e.nombreDestino).IsModified = true;
+
+                await contexto.SaveChangesAsync();
                 return RedirectToAction("Index");
+
             }
             else
             {
@@ -62,18 +81,34 @@ namespace EcoVidaCR.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int Id, [Bind("idVoluntariado,nombreVoluntariado,descripcion,idDestino,correo,telefono,rutaURLimg")] Voluntariados voluntariado)
+        public async Task<IActionResult> Edit(int Id, [Bind("idVoluntariado,nombreVoluntariado,descripcion,idDestino,correo,telefono,rutaURLimg,nombreDestino")] Voluntariados voluntariado)
         {
+            string newNombre = "";
             if (Id != voluntariado.idVoluntariado)
             {
                 return NotFound();
             }
             if (ModelState.IsValid)
             {
+                foreach (var destino in contexto.Destinos)
+                {
+                    if (destino.idDestino == voluntariado.idDestino)
+                    {
+                        newNombre = destino.nombre;
+
+                    }
+                }
+
                 contexto.Update(voluntariado);
+                await contexto.SaveChangesAsync();
+                var entidad = contexto.Voluntariados.FirstOrDefault(t => t.idVoluntariado == voluntariado.idVoluntariado);
+
+                entidad.nombreDestino = newNombre;
+
+
+                contexto.Entry(entidad).Property(e => e.nombreDestino).IsModified = true;
 
                 await contexto.SaveChangesAsync();
-
                 return RedirectToAction("Index");
             }
             else
@@ -144,8 +179,9 @@ namespace EcoVidaCR.Controllers
             var voluntariado = await contexto.Voluntariados.FindAsync(Id);
 
             EnviarEmail(voluntariado);
+            TempData["Mensaje"] = "El correo fue enviado con exito";
 
-            return View();
+            return RedirectToAction("Index");
         }
         private bool EnviarEmail(Voluntariados voluntario)
         {

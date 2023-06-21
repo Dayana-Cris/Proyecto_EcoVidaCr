@@ -27,7 +27,7 @@ namespace EcoVidaCR.Models
         public string descripcion { get; set; }
 
         [Required(ErrorMessage = "Debe ingresar el nombre del destino")]
-        [Display(Name = "Nombre del destino")]
+        [Display(Name = "Id del destino")]
         public int idDestino { get; set; }
 
         [Required(ErrorMessage = "Debe ingresar el correo del usuario")]
@@ -46,6 +46,15 @@ namespace EcoVidaCR.Models
         [StringLength(500, ErrorMessage = "La ruta ingresada es demasiada larga")]
         [DataType(DataType.ImageUrl)]
         public string rutaURLimg { get; set; }
+
+        [Display(Name = "Nombre del destino")]
+        public string nombreDestino {
+            get;
+
+
+            set;
+            
+        }        
 
     }
 }

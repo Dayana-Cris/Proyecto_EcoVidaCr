@@ -5,6 +5,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <body class="">
+    @if (TempData["Mensaje"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                aria-label="Close"></button>
+            <strong>
+                @TempData["Mensaje"]
+            </strong>
+        </div>
+    }
+
     <h1 class="text-center">VOLUNTARIADOS</h1>
 
     @*Se pregunta si el usuario tiene rol de administrador*@
@@ -37,8 +48,8 @@
                     </div>
                     <div>
                         <p>
-                            <span>@Html.DisplayNameFor(model => model.idDestino): </span>
-                            @Html.DisplayFor(modelItem => item.idDestino)
+                            <span>@Html.DisplayNameFor(model => model.nombreDestino): </span>
+                            @Html.DisplayFor(modelItem => item.nombreDestino)
                         </p>
                     </div>
                     <div>
