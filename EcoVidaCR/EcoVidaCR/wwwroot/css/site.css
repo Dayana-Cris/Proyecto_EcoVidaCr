@@ -71,17 +71,15 @@ body {
 
 .bgColorCrearC {
     background-color: rgb(80, 154, 95 );
-    bor
 }
-<<<<<<< Updated upstream
+
 
 .fondoVoluntario {
     background-image: url('/img/voluntariados/fondoMar.jpg');
     background-size: cover;
     background-position: center;
 }
-=======
-/*99, 200, 118*/
+
 
 .tamH1 {
     font-size: 4rem;
@@ -157,18 +155,3 @@ body {
     font-size:24px; 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> Stashed changes
