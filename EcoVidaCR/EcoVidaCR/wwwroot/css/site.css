@@ -48,6 +48,12 @@ body {
     background-position: center;
 }
 
+.fondoDestinoTuris {
+    background-image: url('/img/destinos/fondis.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 .fondoLogin {
     /*background-color: rgb(153, 226, 167);*/
     background-image: url('/img/login/fondo.jpeg');
@@ -66,4 +72,9 @@ body {
     background-color: rgb(80, 154, 95 );
     bor
 }
-/*99, 200, 118*/
+
+.fondoVoluntario {
+    background-image: url('/img/voluntariados/fondoMar.jpg');
+    background-size: cover;
+    background-position: center;
+}

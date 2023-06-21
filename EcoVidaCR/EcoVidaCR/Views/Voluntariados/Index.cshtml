@@ -4,89 +4,89 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<body class="">
+    <h1 class="text-center">VOLUNTARIADOS</h1>
 
-<h1>Index</h1>
+    @*Se pregunta si el usuario tiene rol de administrador*@
+    @if (User.IsInRole("Administrador"))
+    {
+        <button class="btn btn-success">
+            <a asp-action="Create" class="text-light text-decoration-none">[+] Agregar voluntariado</a>
+        </button>
+    }
+    @foreach (var item in Model)
+    {
+        <div class="container mt-2 pt-4 pb-4 mb-4 bg-gradient-primary" style="background-color: rgba(209, 214, 210, 0.8);">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div>
+                        <img src="@item.rutaURLimg" class=img-fluid /><br>
+                    </div>
+                </div>
+                <div class="col-lg-6 fw-bold">
+                    <div>
+                        <h2 class="text-center">@Html.DisplayFor(modelItem => item.nombreVoluntariado)</h2>
+                    </div>
+                    <div hidden>
+                        @Html.DisplayNameFor(model => model.idVoluntariado)
+                        @Html.DisplayFor(modelItem => item.idVoluntariado)
+                    </div>
+                    <div>
+                        @*@Html.DisplayNameFor(model => model.descripcion):*@
+                        <p class="textJustify">@Html.DisplayFor(modelItem => item.descripcion)</p>
+                    </div>
+                    <div>
+                        <p>
+                            <span>@Html.DisplayNameFor(model => model.idDestino): </span>
+                            @Html.DisplayFor(modelItem => item.idDestino)
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <span>@Html.DisplayNameFor(model => model.correo): </span>
+                            @Html.DisplayFor(modelItem => item.correo)
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <span> @Html.DisplayNameFor(model => model.telefono): </span>
+                            @Html.DisplayFor(modelItem => item.telefono)
+                        </p>
+                    </div>
+                    @*Se pregunta si el usuario tiene rol de cliente*@
+                    @if (User.IsInRole("Cliente"))
+                    {
 
-@*Se pregunta si el usuario tiene rol de administrador*@
-@if (User.IsInRole("Administrador"))
-{
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-}
+                        <td>
 
+                            @Html.ActionLink("Solicitar informacion", "Enviado", new {  id=item.idVoluntariado  },
+                    new { @class = "btn btn-primary glyphicon glyphicon-edit" })
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.idVoluntariado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.nombreVoluntariado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.idDestino)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.correo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.telefono)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.idVoluntariado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nombreVoluntariado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.descripcion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.idDestino)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.correo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.telefono)
-                </td>
+                        </td>
+                    }
 
-                @*Se pregunta si el usuario tiene rol de administrador*@
-                @if (User.IsInRole("Cliente"))
-                {
+                    @if (User.IsInRole("Administrador"))
+                    {
+                        <div class="text-center mt-2">
+                            <button class="btn btn-primary">
+                                @Html.ActionLink("Editar", "Edit", new {  id=item.idVoluntariado  },new {@class="text-decoration-none text-light"})
+                            </button>
+                            |
+                            <button class="btn btn-info">
+                                @Html.ActionLink("Detalles", "Details", new {  id=item.idVoluntariado  },new {@class="text-decoration-none text-light"})
+                            </button>
+                            |
+                            <button class="btn btn-danger">
+                                @Html.ActionLink("Delete", "Delete", new { id=item.idVoluntariado  },new {@class="text-decoration-none text-light"})
+                            </button>
 
-                    <td>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
 
-                        @Html.ActionLink("Solicitar informacion", "Enviado", new {  id=item.idVoluntariado  },
-                        new { @class = "btn btn-primary glyphicon glyphicon-edit" })
+        <hr>
 
-                    </td>
-                }
-
-                @*Se pregunta si el usuario tiene rol de administrador*@
-                @if (User.IsInRole("Administrador"))
-                {
-
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new {  id=item.idVoluntariado  }) |
-                        @Html.ActionLink("Details", "Details", new {  id=item.idVoluntariado  }) |
-                        @Html.ActionLink("Delete", "Delete", new { id=item.idVoluntariado  })
-                    </td>
-                }
-
-            </tr>
-        }
-    </tbody>
-</table>
+    }
+</body>

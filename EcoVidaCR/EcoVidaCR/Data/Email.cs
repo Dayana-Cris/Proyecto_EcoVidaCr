@@ -22,10 +22,21 @@ namespace EcoVidaCR.Data
 
 
                 doc.Open();
+                var imagen = iTextSharp.text.Image.GetInstance("wwwroot/img/pdf/imgEco.png");
+                imagen.Alignment = Element.ALIGN_CENTER;
+                imagen.ScaleToFit(300f, 300f);
+                Paragraph title = new Paragraph();
+                title.Font = FontFactory.GetFont(FontFactory.TIMES, 28f, BaseColor.BLACK);
+                title.Add("ECOVIDA COSTA RICA");
+                title.Alignment = Element.ALIGN_CENTER;
+                doc.Add(title);
                 doc.Add(new Paragraph(""));
                 doc.Add(new Paragraph(""));
-                doc.Add(new Paragraph("EcoVidaCR"));
-                doc.Add(new Paragraph("¡Nos complace enormemente que hayas utilizado la página EcoVidaCR y " +
+                doc.Add(new Paragraph("\r\n"));
+                Paragraph texto = new Paragraph();
+                texto.Alignment = Element.ALIGN_JUSTIFIED;
+                //doc.Add(new Paragraph("EcoVidaCR"));
+                texto.Add("Nos complace enormemente que hayas utilizado la página EcoVidaCR y " +
                     "que te hayas interesado en participar en un voluntariado para ayudar al medio ambiente! " +
                     "Queremos expresarte nuestro sincero agradecimiento por tu compromiso y disposición para " +
                     "hacer una diferencia positiva en nuestro entorno natural." +
@@ -42,19 +53,22 @@ namespace EcoVidaCR.Data
                     "conciencia y promoviendo un cambio positivo en nuestras comunidades.\r\n\r\nUna vez más, queremos " +
                     "expresar nuestro más profundo agradecimiento por tu compromiso con EcoVidaCR y por tu deseo de participar " +
                     "en nuestros proyectos de voluntariado. Esperamos trabajar contigo y lograr grandes cosas en beneficio del " +
-                    "medio ambiente."));
-                doc.Add(new Paragraph("\r\n\r\n"));
+                    "medio ambiente.");
+                doc.Add(texto);
+                doc.Add(new Paragraph("\r\n"));
                 doc.Add(new Paragraph("Los datos generales del voluntariado son los siguientes:"));
                 doc.Add(new Paragraph("Nombre:   "+voluntario.nombreVoluntariado));
                 doc.Add(new Paragraph("Descripcion:   "+voluntario.descripcion));
-                doc.Add(new Paragraph("\r\n\r\n"));
-                doc.Add(new Paragraph("A continuacion se presentan los datos de contacto del voluntariado que elegiste"));
+                doc.Add(new Paragraph("\r\n"));
+                doc.Add(new Paragraph("A continuación se presentan los datos de contacto del voluntariado que elegiste"));
                 doc.Add(new Paragraph("Correo:   "+voluntario.correo));
                 doc.Add(new Paragraph("Telefono:   "+voluntario.telefono));
                 doc.Add(new Paragraph("\r\n\r\n"));
                 doc.Add(new Paragraph("¡Gracias por ser parte de nuestro equipo!"));
-                doc.Add(new Paragraph("Con gratitud y aprecio,"));
-                doc.Add(new Paragraph("El equipo de EcoVidaCR"));
+                doc.Add(new Paragraph("Con gratitud y aprecio, el equipo de EcoVidaCR"));
+                doc.Add(new Paragraph("\r\n"));
+
+                doc.Add(imagen);
 
                 writer.CloseStream = false;
                 doc.Close();
@@ -78,7 +92,8 @@ namespace EcoVidaCR.Data
                 email.Subject = "Datos sobre el voluntariado en plataforma web EcoVidaCR";
 
                 //se contruye el contenido del email
-                string html = "Hola acontinuacion se presenta la informacion del voluntariado";
+                string html = "Reciba un coordial saludo de parte del equipo EcoVidaCr, a continuación te adjuntamos" +
+                    " más informacion sobre el voluntariado de tu interés, gracias por formar parte del cambio";
                 
 
 
